@@ -24,12 +24,21 @@ const Signup = () => {
             username : '',
             userpassword : '',
         },
-
         onSubmit: (values) => {
             if (values.username.trim() !== '' && values.userpassword.trim() !== '') {
-                setUserList([...userList, { text: values.username, password: values.userpassword }]);
-                router.push('/login')
-            }
+                const userExists = userList.some((user) => (
+                  user.username === values.username && user.userpassword === values.userpassword
+                ));
+                if (userExists) {
+                    toast.error("User already exist");
+                } 
+                else{
+                    setUserList([...userList, { username: values.username, userpassword: values.userpassword }]);
+                    router.push('/login')
+                    toast.success("User added successfully")
+                }
+              }
+
             else {
                 toast.error("Please enter data");
             }
@@ -37,7 +46,6 @@ const Signup = () => {
     })
     useEffect(() => {
         localStorage.setItem("userList", JSON.stringify(userList));
-        console.log(userList,'ooo');
       }, [userList]);
 
     return (

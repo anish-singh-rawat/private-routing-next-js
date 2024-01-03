@@ -25,11 +25,11 @@ const Login = () => {
         },
      onSubmit: (values) => {
         if (values.username.trim() !== '' && values.userpassword.trim() !== '') {
-          const userExists = data.some((data) => (
-            data.username === values.username && data.password === values.userpassword
+          const userExists = data.some((user) => (
+            user.username === values.username && user.userpassword === values.userpassword
           ));
           if (userExists) {
-            toast.success("User exists successfully");
+            toast.success("User login successfully");
             router.push('/dashboard')
           } else {
             toast.error("User doesn't exist");

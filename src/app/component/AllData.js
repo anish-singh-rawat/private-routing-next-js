@@ -10,6 +10,11 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
+const logout = ()=>{
+    console.log('logout function called');
+    localStorage.clear()
+}
+
 export const allFilesData = [
   { fileName: 'Profile', icon: <AccountCircleIcon />, path: '/dashboard/userProfile' },
 
@@ -31,5 +36,5 @@ export const allFilesData = [
   
   { fileName: 'Completed Task', icon: <AddTaskIcon />, path: '/dashboard/CompletedTask' },
 
-  { fileName: 'LogOut', icon: <PowerSettingsNewIcon />, path: '/' },
+  { fileName: 'LogOut', icon: <PowerSettingsNewIcon onClick={logout} />, path: '/' },
 ]
