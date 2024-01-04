@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setCookie } from 'cookies-next';
+import { CircularProgress } from '@mui/material';
 
 const getLocalItem = () => {
     let userList = localStorage.getItem("userList");
@@ -18,6 +19,7 @@ const getLocalItem = () => {
 
 const Login = () => {
     const [data, setData] = useState(getLocalItem())
+    const [loading , setLoading] = useState(false)
     const router = useRouter();
     const {handleSubmit, handleChange, values}  = useFormik({
         initialValues : {
@@ -32,7 +34,11 @@ const Login = () => {
           if (userExists) {
             toast.success("User login successfully");
             setCookie('logged', 'true');
-            router.push('/dashboard')
+            setTimeout(() => {
+              router.push('/dashboard')
+              setLoading(false)
+            },4000);
+            setLoading(true)
           } else {
             toast.error("User doesn't exist");
           }
@@ -70,9 +76,12 @@ const Login = () => {
                                     </div>
                                     <br />
                                     <center>
+                                      {
+                                        loading ? <CircularProgress/> :
                                         <button className="btn text-white" type='submit'
                                         style={{backgroundColor : '#2c3e50'}}> Login 
                                         </button>
+                                      }
                                     </center>
                                     <br />
                                     <center className='p-2'>
