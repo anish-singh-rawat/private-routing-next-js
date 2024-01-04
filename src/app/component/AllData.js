@@ -9,11 +9,13 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { deleteCookie, setCookie } from 'cookies-next';
 
 const logout = () => {
   setTimeout(() => {
       localStorage.clear();
   }, 0);
+  deleteCookie('logged');
 }
 
 export const allFilesData = [

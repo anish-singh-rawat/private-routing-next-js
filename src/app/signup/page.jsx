@@ -23,9 +23,10 @@ const Signup = () => {
         initialValues: {
             username : '',
             userpassword : '',
+            userProfile : '',
         },
         onSubmit: (values) => {
-            if (values.username.trim() !== '' && values.userpassword.trim() !== '') {
+         if (values.username.trim() !== '' && values.userpassword.trim() !== ''&& values.userProfile.trim() !== '') {
                 const userExists = userList.some((user) => (
                   user.username === values.username && user.userpassword === values.userpassword
                 ));
@@ -33,7 +34,8 @@ const Signup = () => {
                     toast.error("User already exist");
                 } 
                 else{
-                    setUserList([...userList, { username: values.username, userpassword: values.userpassword }]);
+                    setUserList([...userList, { username: values.username, userpassword: values.userpassword,
+                        userProfile : values.userProfile }]);
                     router.push('/login')
                     toast.success("User added successfully")
                 }
@@ -58,14 +60,12 @@ const Signup = () => {
                             <div className="sub-form-data">
                                 <div className="form-top-heading mt-2">SinUp</div>
                                 <form className='mt-2' onSubmit={handleSubmit}>
-
                                     <div className="user-name-feild-div">
                                         <label htmlFor="" className='user-name-label-feild'> User Name </label>
                                         <input type="text" name='username'
                                             className='user-name-input mt-2'
                                             onChange={handleChange}
-                                            value={values.username}
-                                        />
+                                            value={values.username}  />
                                     </div>
                                     <div className="user-password-feild mt-5">
                                         <label htmlFor="" className='user-password-label-feild'>User Password </label>
@@ -74,6 +74,15 @@ const Signup = () => {
                                             onChange={handleChange}
                                             value={values.userpassword} />
                                     </div>
+
+                                    <div className="user-profile-picture-feild mt-5">
+                                    <label htmlFor="" className='user-password-label-feild'>User Profile </label>
+                                        <input type="file" name='userProfile'
+                                            className='user-password-input mt-2'
+                                            onChange={handleChange}
+                                            value={values.userProfile} />
+                                    </div>
+
                                     <br />
                                     <center>
                                         <button type='submit'

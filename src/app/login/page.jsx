@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setCookie } from 'cookies-next';
 
 const getLocalItem = () => {
     let userList = localStorage.getItem("userList");
@@ -30,6 +31,7 @@ const Login = () => {
           ));
           if (userExists) {
             toast.success("User login successfully");
+            setCookie('logged', 'true');
             router.push('/dashboard')
           } else {
             toast.error("User doesn't exist");

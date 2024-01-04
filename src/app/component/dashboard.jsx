@@ -22,6 +22,8 @@ import Link from 'next/link';
 import { Avatar } from '@mui/material';
 import img from './img.png'
 import './Test.css';
+import { setCookie } from 'cookies-next';
+
 
 const getLocalItem = () => {
   let userList = localStorage.getItem("userList");
