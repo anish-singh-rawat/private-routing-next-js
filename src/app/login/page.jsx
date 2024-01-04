@@ -18,8 +18,9 @@ const getLocalItem = () => {
   };
 
 const Login = () => {
-    const [data, setData] = useState(getLocalItem())
-    const [loading , setLoading] = useState(false)
+    const [data, setData] = useState(getLocalItem());
+    const [loading , setLoading] = useState(false);
+    const [disabled, setDisabled] = useState(false);
     const router = useRouter();
     const {handleSubmit, handleChange, values}  = useFormik({
         initialValues : {
@@ -39,6 +40,7 @@ const Login = () => {
               setLoading(false)
             },4000);
             setLoading(true)
+            setDisabled(true);
           } else {
             toast.error("User doesn't exist");
           }
@@ -78,8 +80,10 @@ const Login = () => {
                                     <center>
                                       {
                                         loading ? <CircularProgress/> :
-                                        <button className="btn text-white" type='submit'
-                                        style={{backgroundColor : '#2c3e50'}}> Login 
+                                        <button className="btn text-white" 
+                                        type='submit' disabled={disabled}
+                                        style={{backgroundColor : '#2c3e50'}}> 
+                                        Login 
                                         </button>
                                       }
                                     </center>
