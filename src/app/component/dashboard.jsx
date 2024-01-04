@@ -24,6 +24,15 @@ import Link from 'next/link';
 import { Avatar } from '@mui/material';
 import './Test.css';
 
+const getLocalItem = () => {
+  let userList = localStorage.getItem("userList");
+  if (userList) {
+    return JSON.parse(localStorage.getItem("userList"));
+  } else {
+    return [];
+  }
+};
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -93,6 +102,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer({ pages }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [userData, setUserData] = React.useState(getLocalItem())
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,7 +138,7 @@ export default function MiniDrawer({ pages }) {
         <DrawerHeader sx={{ bgcolor: '#2f3640', color: 'white' }}>
           <Toolbar>
             <Avatar src='myImg.jpg'></Avatar>
-            <Typography varient="h5">Anish singh rawat</Typography>
+            <Typography varient="h5"> Hello Mr. {userData[0].username.substr(0,5)} </Typography>
           </Toolbar>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}

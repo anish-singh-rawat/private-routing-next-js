@@ -1,7 +1,21 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import './UserProfile.css'
 
+const getLocalItem = () => {
+  let userList = localStorage.getItem("userList");
+  if (userList) {
+    return JSON.parse(localStorage.getItem("userList"));
+  } else {
+    return [];
+  }
+};
+
+
 const page = () => {
+  const [userData, setUserData] = useState(getLocalItem())
+  const randomNumber = Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+  const randomNumber2 = Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000;
   return (
     <>
       <div className="header ">
@@ -10,15 +24,15 @@ const page = () => {
             img
           </div>
           <div className="top-sub-header mt-2 mx-3">
-            <div className="name">Anish Singh Rawat</div>
-            <div className="work">React JS developer</div>
-            <div className="id">Emplooy ID : 712</div>
+            <div className="name">Emplooy Name : {userData[0].username}</div>
+            <div className="work">designation :  React JS developer</div>
+            <div className="id">Emplooy ID : {randomNumber}</div>
           </div>
         </div>
         <div className="top-right-header">
-          <div className="name">Anish Singh Rawat</div>
-          <div className="work">React JS developer</div>
-          <div className="id">Emplooy ID : 712</div>
+          <div className="name">Emplooy password : {userData[0].userpassword}</div>
+          <div className="work">designation : React JS developer</div>
+          <div className="id">Emplooy UID : {randomNumber2}</div>
         </div>
       </div>
     </>

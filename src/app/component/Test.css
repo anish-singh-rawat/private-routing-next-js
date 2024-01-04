@@ -1,7 +1,4 @@
 @media (max-width: 444px) {
-    .test{
-        background-color: #00a900;
-    }
     .responsive{
         display: none !important;
     }
