@@ -7,7 +7,6 @@
   display: flex;
 }
 .sub-pic {
-  background-color: red;
   height: 100px;
   width: 100px;
   border-radius: 100%;
@@ -15,6 +14,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  border: 1px solid grey;
 }
 .header{
   overflow-x:hidden ;
@@ -44,7 +44,7 @@
   .sub-pic{
     width: 100px;
     height: 90px;
-    border-radius: 20px;
+    border-radius: 100%;
     margin: auto;
   }
   .top-right-header{

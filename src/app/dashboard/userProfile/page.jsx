@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import './UserProfile.css'
+import img from './img.png' 
 
 const getLocalItem = () => {
   let userList = localStorage.getItem("userList");
@@ -22,7 +23,7 @@ const page = () => {
       <div className="header ">
         <div className="top-left-header">
           <div className="sub-pic">
-            img
+            <img src={img.src} className='sub-pic'/>
           </div>
           <div className="top-sub-header mt-2 mx-3">
             <div className="name">Emplooy Name : {newUser.username}</div>

@@ -17,11 +17,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { allFilesData } from './AllData';
 import Link from 'next/link';
 import { Avatar } from '@mui/material';
+import img from './img.png'
 import './Test.css';
 
 const getLocalItem = () => {
@@ -137,7 +136,7 @@ export default function MiniDrawer({ pages }) {
       <Drawer variant="permanent" open={open} sx={{ bgcolor: '#2f3640', color: 'white', height: '100%' }}>
         <DrawerHeader sx={{ bgcolor: '#2f3640', color: 'white' }}>
           <Toolbar>
-            <Avatar src='myImg.jpg'></Avatar>
+            <Avatar src={img.src}></Avatar>
             <Typography varient="h5"> Hello Mr. {newUser.username.substr(0,5)} </Typography>
           </Toolbar>
           <IconButton onClick={handleDrawerClose}>
