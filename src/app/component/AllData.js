@@ -10,9 +10,10 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
-const logout = ()=>{
-    console.log('logout function called');
-    localStorage.clear()
+const logout = () => {
+  setTimeout(() => {
+      localStorage.clear();
+  }, 0);
 }
 
 export const allFilesData = [

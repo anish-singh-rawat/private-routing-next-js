@@ -103,7 +103,7 @@ export default function MiniDrawer({ pages }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [userData, setUserData] = React.useState(getLocalItem())
-
+  const newUser = userData[userData.length - 1]
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -138,7 +138,7 @@ export default function MiniDrawer({ pages }) {
         <DrawerHeader sx={{ bgcolor: '#2f3640', color: 'white' }}>
           <Toolbar>
             <Avatar src='myImg.jpg'></Avatar>
-            <Typography varient="h5"> Hello Mr. {userData[0].username.substr(0,5)} </Typography>
+            <Typography varient="h5"> Hello Mr. {newUser.username.substr(0,5)} </Typography>
           </Toolbar>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
