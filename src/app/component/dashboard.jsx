@@ -22,6 +22,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import { allFilesData } from './AllData';
 import Link from 'next/link';
 import { Avatar } from '@mui/material';
+import './Test.css';
 
 const drawerWidth = 240;
 
@@ -91,7 +92,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function MiniDrawer({ pages }) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -118,7 +119,7 @@ export default function MiniDrawer({ pages }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-          Welcome to your personal dashboard
+            Welcome to your personal dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -152,10 +153,11 @@ export default function MiniDrawer({ pages }) {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box className={`${open&&'responsive'}`} component="main" sx={{ flexGrow: 1, p: 3}}>
         <DrawerHeader />
         {pages}
       </Box>
+
     </Box>
   );
 }
