@@ -11,12 +11,13 @@ export function middleware(request) {
   }
   else{
     if(url.pathname === '/'){
-      url.pathname == '/dashboard';
-      return NextResponse.redirect(url)
+      return NextResponse.redirect(new URL('/dashboard', request.url))
     }
-  }
-  
-  if (request.nextUrl.pathname.startsWith('/login')) {
-    return NextResponse.rewrite(new URL('/', request.url))
+    else if (url.pathname === '/signup'){
+      return NextResponse.rewrite(new URL('/dashboard', request.url))
+    }
+    else if (url.pathname === '/login'){
+      return NextResponse.rewrite(new URL('/dashboard', request.url))
+    }
   }
 }   

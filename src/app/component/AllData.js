@@ -12,7 +12,9 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { deleteCookie } from 'cookies-next';
 
 const logout = () => {
-  deleteCookie('logged');
+  setTimeout(() => {
+    deleteCookie('logged');
+  }, 0);
 }
 
 export const allFilesData = [
